@@ -1,3 +1,4 @@
+#define QTY_ARRSIZE 5
 #define CHAR_SIZE 9
 struct sale
 {
@@ -7,5 +8,5 @@ struct sale
     
     char code;
     char tcode;
-    char product_name[CHAR_SIZE];
+    char product_name[CHAR_SIZE];    
 }; // 45 byte
