@@ -31,16 +31,7 @@ public:
     }
     void subMoney(long long money)
     {
-        if (balance > money)
-        {
-            balance -= money;
-        }
-        else
-        {
-            cout << "=================" << endl;
-            cout << "Not Enough Money" << endl;
-            cout << "=================" << endl;
-        }
+        balance -= money;        
     }
     void setData(char *_accid, char *_name, long long money)
     {
@@ -89,9 +80,12 @@ int main()
             cout << "PROGRAME EXIT" << endl;
             exit(0);
             break;
-        }
+        default:
+            cout << "PROGRAME EXIT" << endl;
+            exit(0);
+            break;
+        }        
     }
-
     return 0;
 }
 void Account::All_Account_inquiry()
@@ -141,7 +135,7 @@ void Account::Withdrawal()
 {
     char inputaccid[SI];
     long long money = 0;
-    int account_f = 0; // find account
+    int account_f = 0, sub_f = 0; // find account
     cout << "#3 Withdrawal" << endl;
     if (inx == 0)
     {
@@ -172,15 +166,35 @@ void Account::Withdrawal()
     }
     if (account_f == 1)
     {
-        cout << "Input Withdrawal value :\t" << ends;
-        fflush(stdin);
-        cin >> money;
-        for (int i = 0; i < inx; i++)
+        while(1)
         {
-            if (strcmp(p[i].accid, inputaccid) == 0)
-            {
-                p[i].subMoney(money);
+            cout << "Input Withdrawal value :\t" << ends;
+            fflush(stdin);
+            cin >> money;
+            for (int i = 0; i < inx; i++)
+            {                
+                if (strcmp(p[i].accid, inputaccid) == 0)
+                {
+                    if(p[i].balance >= money)
+                    {
+                        p[i].subMoney(money);
+                        sub_f = 1;
+                    }
+                    else
+                    {
+                        cout << "===========================" << endl;
+                        cout << "Not Enough Money. Retry Again" << endl;
+                        cout << "===========================" << endl;
+                    }                    
+                }
+                break;
             }
+
+            if(sub_f == 1)
+            {
+                break;
+            }
+
         }
     }
 
