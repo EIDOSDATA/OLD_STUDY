@@ -3,7 +3,8 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**"                
+                "${workspaceFolder}/**",                
+                "C:/Users/30413/Documents/GitHub/OLD_STUDY/C/TEST"               
             ],
             "defines": [
                 "_DEBUG",
